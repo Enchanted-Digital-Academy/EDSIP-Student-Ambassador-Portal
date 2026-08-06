@@ -172,6 +172,9 @@ const ApplicationPage = () => {
                   placeholder="Enter your full name"
                   {...register("fullName", {
                     required: "Full name is required",
+                    validate: (value) =>
+                      value.trim().length > 0 ||
+                      "Full name cannot be empty",
                   })}
                   aria-invalid={!!errors.fullName}
                 />
@@ -198,6 +201,9 @@ const ApplicationPage = () => {
                       value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                       message: "Enter a valid email address",
                     },
+                    validate: (value) =>
+                      value.trim().length > 0 ||
+                      "Email address cannot be empty",
                   })}
                   aria-invalid={!!errors.email}
                 />
@@ -220,6 +226,9 @@ const ApplicationPage = () => {
                   placeholder="Enter your phone number"
                   {...register("phoneNumber", {
                     required: "Phone number is required",
+                    validate: (value) =>
+                      value.trim().length > 0 ||
+                      "Phone number cannot be empty",
                   })}
                   aria-invalid={!!errors.phoneNumber}
                 />
@@ -253,6 +262,9 @@ const ApplicationPage = () => {
                   placeholder="Enter your university"
                   {...register("university", {
                     required: "University is required",
+                    validate: (value) =>
+                      value.trim().length > 0 ||
+                      "University cannot be empty",
                   })}
                   aria-invalid={!!errors.university}
                 />
@@ -275,6 +287,9 @@ const ApplicationPage = () => {
                   placeholder="Enter your department"
                   {...register("department", {
                     required: "Department is required",
+                    validate: (value) =>
+                      value.trim().length > 0 ||
+                      "Department cannot be empty",
                   })}
                   aria-invalid={!!errors.department}
                 />
@@ -324,6 +339,9 @@ const ApplicationPage = () => {
                   placeholder="Enter your state"
                   {...register("state", {
                     required: "State is required",
+                    validate: (value) =>
+                      value.trim().length > 0 ||
+                      "State cannot be empty",
                   })}
                   aria-invalid={!!errors.state}
                 />
@@ -357,11 +375,9 @@ const ApplicationPage = () => {
                   placeholder="Tell us why you want to become an ambassador..."
                   {...register("motivation", {
                     required: "Motivation is required",
-                    minLength: {
-                      value: 20,
-                      message:
-                        "Please provide at least 20 characters",
-                    },
+                    validate: (value) =>
+                      value.trim().length >= 20 ||
+                      "Please provide at least 20 characters",
                   })}
                   aria-invalid={!!errors.motivation}
                 />
@@ -384,6 +400,9 @@ const ApplicationPage = () => {
                   placeholder="Tell us about any leadership experience you have..."
                   {...register("leadershipExperience", {
                     required: "Leadership experience is required",
+                    validate: (value) =>
+                      value.trim().length > 0 ||
+                      "Leadership experience cannot be empty",
                   })}
                   aria-invalid={!!errors.leadershipExperience}
                 />
@@ -415,7 +434,11 @@ const ApplicationPage = () => {
                 id="socialMediaLinks"
                 placeholder="LinkedIn, X, Instagram, etc."
                 {...register("socialMediaLinks", {
-                  required: "Please provide at least one social media link",
+                  required:
+                    "Please provide at least one social media link",
+                  validate: (value) =>
+                    value.trim().length > 0 ||
+                    "Social media links cannot be empty",
                 })}
                 aria-invalid={!!errors.socialMediaLinks}
               />
