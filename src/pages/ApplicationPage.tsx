@@ -32,6 +32,7 @@ const ApplicationPage = () => {
     mode: "onBlur",
   });
 
+  // Runs after the form passes validation
   const onValidForm = (data: ApplicationFormData) => {
     console.log("Application ready for confirmation:", data);
 
@@ -39,6 +40,7 @@ const ApplicationPage = () => {
     setShowConfirmation(true);
   };
 
+  // Handles the final confirmation
   const handleConfirmSubmission = async () => {
     if (!pendingData) return;
 
@@ -48,14 +50,26 @@ const ApplicationPage = () => {
     setSubmissionStatus("loading");
 
     try {
-      // Simulate backend API request.
+      // Temporary mock API request.
+      // Replace this with the real backend request later.
       await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      // Temporary mock response.
+      // Change this to false if you want to test the error state.
+      const response = {
+        ok: true,
+      };
+
+      if (!response.ok) {
+        throw new Error("Application submission failed");
+      }
 
       console.log(
         "Application submitted successfully:",
         pendingData
       );
 
+      // Clear the form after successful submission
       reset();
       setPendingData(null);
       setSubmissionStatus("success");
@@ -65,9 +79,15 @@ const ApplicationPage = () => {
     }
   };
 
+  // Retry after an error
   const handleRetry = () => {
     setSubmissionStatus("idle");
+    setShowConfirmation(false);
   };
+
+  // ------------------------------------------
+  // SUCCESS SCREEN
+  // ------------------------------------------
 
   if (submissionStatus === "success") {
     return (
@@ -114,6 +134,10 @@ const ApplicationPage = () => {
     );
   }
 
+  // ------------------------------------------
+  // APPLICATION FORM
+  // ------------------------------------------
+
   return (
     <main className="application-page">
       <div className="application-container">
@@ -125,6 +149,8 @@ const ApplicationPage = () => {
             other students.
           </p>
         </header>
+
+        {/* ERROR MESSAGE */}
 
         {submissionStatus === "error" && (
           <div
@@ -152,7 +178,9 @@ const ApplicationPage = () => {
           onSubmit={handleSubmit(onValidForm)}
           noValidate
         >
-          {/* Personal Information */}
+          {/* =========================================
+              PERSONAL INFORMATION
+          ========================================= */}
 
           <section className="form-section">
             <div className="form-section-header">
@@ -161,6 +189,8 @@ const ApplicationPage = () => {
             </div>
 
             <div className="form-grid">
+              {/* Full Name */}
+
               <div className="form-group">
                 <label htmlFor="fullName">
                   Full Name <span className="required">*</span>
@@ -182,6 +212,8 @@ const ApplicationPage = () => {
                   </span>
                 )}
               </div>
+
+              {/* Email */}
 
               <div className="form-group">
                 <label htmlFor="email">
@@ -209,6 +241,8 @@ const ApplicationPage = () => {
                 )}
               </div>
 
+              {/* Phone */}
+
               <div className="form-group">
                 <label htmlFor="phoneNumber">
                   Phone Number <span className="required">*</span>
@@ -233,7 +267,9 @@ const ApplicationPage = () => {
             </div>
           </section>
 
-          {/* Academic Information */}
+          {/* =========================================
+              ACADEMIC INFORMATION
+          ========================================= */}
 
           <section className="form-section">
             <div className="form-section-header">
@@ -242,6 +278,8 @@ const ApplicationPage = () => {
             </div>
 
             <div className="form-grid">
+              {/* University */}
+
               <div className="form-group">
                 <label htmlFor="university">
                   University <span className="required">*</span>
@@ -264,6 +302,8 @@ const ApplicationPage = () => {
                 )}
               </div>
 
+              {/* Department */}
+
               <div className="form-group">
                 <label htmlFor="department">
                   Department <span className="required">*</span>
@@ -285,6 +325,8 @@ const ApplicationPage = () => {
                   </span>
                 )}
               </div>
+
+              {/* Academic Level */}
 
               <div className="form-group">
                 <label htmlFor="academicLevel">
@@ -313,6 +355,8 @@ const ApplicationPage = () => {
                 )}
               </div>
 
+              {/* State */}
+
               <div className="form-group">
                 <label htmlFor="state">
                   State <span className="required">*</span>
@@ -337,7 +381,9 @@ const ApplicationPage = () => {
             </div>
           </section>
 
-          {/* Experience & Motivation */}
+          {/* =========================================
+              EXPERIENCE & MOTIVATION
+          ========================================= */}
 
           <section className="form-section">
             <div className="form-section-header">
@@ -346,6 +392,8 @@ const ApplicationPage = () => {
             </div>
 
             <div className="form-grid">
+              {/* Motivation */}
+
               <div className="form-group full-width">
                 <label htmlFor="motivation">
                   Why do you want to become an EDSIP Student Ambassador?{" "}
@@ -373,6 +421,8 @@ const ApplicationPage = () => {
                 )}
               </div>
 
+              {/* Leadership Experience */}
+
               <div className="form-group full-width">
                 <label htmlFor="leadershipExperience">
                   Leadership Experience{" "}
@@ -397,7 +447,9 @@ const ApplicationPage = () => {
             </div>
           </section>
 
-          {/* Social Media */}
+          {/* =========================================
+              SOCIAL MEDIA
+          ========================================= */}
 
           <section className="form-section">
             <div className="form-section-header">
@@ -415,7 +467,8 @@ const ApplicationPage = () => {
                 id="socialMediaLinks"
                 placeholder="LinkedIn, X, Instagram, etc."
                 {...register("socialMediaLinks", {
-                  required: "Please provide at least one social media link",
+                  required:
+                    "Please provide at least one social media link",
                 })}
                 aria-invalid={!!errors.socialMediaLinks}
               />
@@ -428,7 +481,9 @@ const ApplicationPage = () => {
             </div>
           </section>
 
-          {/* Submit */}
+          {/* =========================================
+              SUBMIT
+          ========================================= */}
 
           <div className="form-actions">
             <button
@@ -443,7 +498,9 @@ const ApplicationPage = () => {
           </div>
         </form>
 
-        {/* Confirmation Modal */}
+        {/* =========================================
+            CONFIRMATION MODAL
+        ========================================= */}
 
         {showConfirmation && pendingData && (
           <div
@@ -497,7 +554,9 @@ const ApplicationPage = () => {
 
                   <div>
                     <strong>Academic Level</strong>
-                    <span>{pendingData.academicLevel} Level</span>
+                    <span>
+                      {pendingData.academicLevel} Level
+                    </span>
                   </div>
                 </div>
               </div>
