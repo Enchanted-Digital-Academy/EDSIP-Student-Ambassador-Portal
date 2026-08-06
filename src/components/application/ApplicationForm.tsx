@@ -1,22 +1,20 @@
 import { useForm } from "react-hook-form";
 import type { ApplicationFormData } from "../../types/application";
 
-const ApplicationForm = () => {
+interface ApplicationFormProps {
+  onSubmit: (data: ApplicationFormData) => void;
+  isSubmitting: boolean;
+}
+
+const ApplicationForm = ({
+  onSubmit,
+  isSubmitting,
+}: ApplicationFormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<ApplicationFormData>();
-
-  const onSubmit = async (data: ApplicationFormData) => {
-    console.log("Application submitted:", data);
-
-    // Temporary mock API request.
-    // This will be replaced with the real backend API later.
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    console.log("Application processed successfully");
-  };
 
   return (
     <form className="application-form" onSubmit={handleSubmit(onSubmit)}>
@@ -246,6 +244,7 @@ const ApplicationForm = () => {
         </div>
       </section>
 
+      {/* Submit */}
       <button
         className="submit-button"
         type="submit"
