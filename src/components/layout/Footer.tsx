@@ -91,7 +91,7 @@ const Footer = () => {
                 },
                 {
                   icon: <Phone size={14} />,
-                  text: "+234 800 000 0000",
+                  text: "+234 706 586 2449",
                 },
                 {
                   icon: <MapPin size={14} />,
