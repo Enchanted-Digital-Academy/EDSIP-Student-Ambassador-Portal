@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import bulbImage from "../assets/bulb.png"; 
+
 export interface ApplicationFormData {
   fullName: string;
   email: string;
@@ -11,7 +13,8 @@ export interface ApplicationFormData {
   state: string;
   motivation: string;
   leadershipExperience: string;
-  socialMediaLinks: string;
+  socialMediaLinks: string; 
+  termsAccepted: boolean; 
 }
 
 type SubmissionStatus = "idle" | "loading" | "success" | "error";
@@ -27,10 +30,16 @@ const ApplicationPage = () => {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm<ApplicationFormData>({
     mode: "onBlur",
+    defaultValues: {
+      termsAccepted: false,
+    },
   });
+
+  const termsAccepted = watch("termsAccepted");
 
   // Runs after the form passes validation
   const onValidForm = (data: ApplicationFormData) => {
@@ -51,11 +60,9 @@ const ApplicationPage = () => {
 
     try {
       // Temporary mock API request.
-      // Replace this with the real backend request later.
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       // Temporary mock response.
-      // Change this to false if you want to test the error state.
       const response = {
         ok: true,
       };
@@ -123,6 +130,7 @@ const ApplicationPage = () => {
                 className="success-button"
                 onClick={() => {
                   setSubmissionStatus("idle");
+                  reset();
                 }}
               >
                 Submit Another Application
@@ -142,11 +150,26 @@ const ApplicationPage = () => {
     <main className="application-page">
       <div className="application-container">
         <header className="application-header">
-          <h1>EDSIP Student Ambassador</h1>
+          
+          {/* ✅ 2. ADD THE IMAGE HERE */}
+          <img 
+            src={bulbImage} 
+            alt="EDSIP Ambassador Bulb" 
+            style={{ 
+              width: "180px", 
+              height: "auto", 
+              marginBottom: "20px",
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto"
+            }} 
+          />
+
+          <h1>Become an EDSIP Student Ambassador</h1>
 
           <p>
-            Apply to become an EDSIP Student Ambassador and help empower
-            other students.
+            Complete the application below to join a community of student 
+            leaders promoting career opportunities and making an impact on campus.
           </p>
         </header>
 
@@ -154,7 +177,7 @@ const ApplicationPage = () => {
 
         {submissionStatus === "error" && (
           <div
-            className="submission-message error-state"
+            className="submission-message"
             role="alert"
           >
             <h2>Something went wrong</h2>
@@ -185,7 +208,7 @@ const ApplicationPage = () => {
           <section className="form-section">
             <div className="form-section-header">
               <h2>Personal Information</h2>
-              <p>Tell us a little about yourself.</p>
+              <p>Fill in your details below. Fields marked with * are required.</p>
             </div>
 
             <div className="form-grid">
@@ -318,13 +341,13 @@ const ApplicationPage = () => {
 
               <div className="form-group">
                 <label htmlFor="department">
-                  Department <span className="required">*</span>
+                  Faculty / Department <span className="required">*</span>
                 </label>
 
                 <input
                   id="department"
                   type="text"
-                  placeholder="Enter your department"
+                  placeholder="Enter your faculty or department"
                   {...register("department", {
                     required: "Department is required",
                     validate: (value) =>
@@ -400,12 +423,12 @@ const ApplicationPage = () => {
           </section>
 
           {/* =========================================
-              EXPERIENCE & MOTIVATION
+              TELL US ABOUT YOURSELF
           ========================================= */}
 
           <section className="form-section">
             <div className="form-section-header">
-              <h2>Experience & Motivation</h2>
+              <h2>Tell Us About Yourself</h2>
               <p>Help us understand what drives you.</p>
             </div>
 
@@ -420,7 +443,7 @@ const ApplicationPage = () => {
 
                 <textarea
                   id="motivation"
-                  placeholder="Tell us why you want to become an ambassador..."
+                  placeholder="Tell us what motivates you to join the programme..."
                   {...register("motivation", {
                     required: "Motivation is required",
                     validate: (value) =>
@@ -436,58 +459,69 @@ const ApplicationPage = () => {
                   </span>
                 )}
               </div>
-
-              {/* Leadership Experience */}
-
-              <div className="form-group full-width">
-                <label htmlFor="leadershipExperience">
-                  Leadership Experience{" "}
-                  <span className="required">*</span>
-                </label>
-
-                <textarea
-                  id="leadershipExperience"
-                  placeholder="Tell us about any leadership experience you have..."
-                  {...register("leadershipExperience", {
-                    required: "Leadership experience is required",
-                    validate: (value) =>
-                      value.trim().length > 0 ||
-                      "Leadership experience cannot be empty",
-                  })}
-                  aria-invalid={!!errors.leadershipExperience}
-                />
-
-                {errors.leadershipExperience && (
-                  <span className="field-error">
-                    {errors.leadershipExperience.message}
-                  </span>
-                )}
-              </div>
             </div>
           </section>
 
           {/* =========================================
-              SOCIAL MEDIA
+              LEADERSHIP EXPERIENCE
           ========================================= */}
 
           <section className="form-section">
             <div className="form-section-header">
-              <h2>Social Media</h2>
-              <p>Share your professional or social profiles.</p>
+              <h2>Leadership Experience</h2>
+              <p>Share any leadership roles, volunteer work, campus activities, or community involvement.</p>
+            </div>
+
+            <div className="form-group full-width">
+              <label htmlFor="leadershipExperience">
+                Leadership Experience <span className="required">*</span>
+              </label>
+
+              <textarea
+                id="leadershipExperience"
+                placeholder="Tell us about any leadership experience you have..."
+                {...register("leadershipExperience", {
+                  required: "Leadership experience is required",
+                  validate: (value) =>
+                    value.trim().length > 0 ||
+                    "Leadership experience cannot be empty",
+                })}
+                aria-invalid={!!errors.leadershipExperience}
+              />
+
+              {errors.leadershipExperience && (
+                <span className="field-error">
+                  {errors.leadershipExperience.message}
+                </span>
+              )}
+            </div>
+          </section>
+
+          {/* =========================================
+              SOCIAL MEDIA LINKS
+          ========================================= */}
+
+          <section className="form-section">
+            <div className="form-section-header">
+              <h2>Social Media Links</h2>
+              <p>Share your professional or social profiles so we can learn more about you.</p>
             </div>
 
             <div className="form-group">
               <label htmlFor="socialMediaLinks">
-                Social Media Links{" "}
-                <span className="required">*</span>
+                Social Media Links <span className="required">*</span>
               </label>
 
-              <textarea
+              <input
                 id="socialMediaLinks"
-                placeholder="LinkedIn, X, Instagram, etc."
+                type="url"
+                placeholder="https://linkedin.com/in/your-profile"
                 {...register("socialMediaLinks", {
-                  required:
-                    "Please provide at least one social media link",
+                  required: "Please provide at least one social media link",
+                  pattern: {
+                    value: /^https?:\/\/.+/,
+                    message: "Please enter a valid URL (e.g., https://...)"
+                  }
                 })}
                 aria-invalid={!!errors.socialMediaLinks}
               />
@@ -501,18 +535,41 @@ const ApplicationPage = () => {
           </section>
 
           {/* =========================================
-              SUBMIT
+              TERMS & SUBMIT
           ========================================= */}
 
           <div className="form-actions">
+            {/* Terms Checkbox */}
+            <div className="terms-group">
+              <label className="terms-label">
+                <input
+                  type="checkbox"
+                  {...register("termsAccepted", {
+                    required: "You must confirm that the information is accurate",
+                  })}
+                  aria-invalid={!!errors.termsAccepted}
+                />
+                <span>
+                  I confirm that the information provided is accurate.
+                  <span className="required">*</span>
+                </span>
+              </label>
+
+              {errors.termsAccepted && (
+                <span className="field-error">
+                  {errors.termsAccepted.message}
+                </span>
+              )}
+            </div>
+
             <button
               className="submit-button"
               type="submit"
-              disabled={submissionStatus === "loading"}
+              disabled={submissionStatus === "loading" || !termsAccepted}
             >
               {submissionStatus === "loading"
                 ? "Submitting..."
-                : "Submit Application"}
+                : "Apply now"}
             </button>
           </div>
         </form>
@@ -557,7 +614,7 @@ const ApplicationPage = () => {
 
                 <div className="confirmation-summary">
                   <div>
-                    <strong>Name</strong>
+                    <strong>Full Name</strong>
                     <span>{pendingData.fullName}</span>
                   </div>
 
@@ -567,8 +624,18 @@ const ApplicationPage = () => {
                   </div>
 
                   <div>
+                    <strong>Phone</strong>
+                    <span>{pendingData.phoneNumber}</span>
+                  </div>
+
+                  <div>
                     <strong>University</strong>
                     <span>{pendingData.university}</span>
+                  </div>
+
+                  <div>
+                    <strong>Department</strong>
+                    <span>{pendingData.department}</span>
                   </div>
 
                   <div>
@@ -576,6 +643,11 @@ const ApplicationPage = () => {
                     <span>
                       {pendingData.academicLevel} Level
                     </span>
+                  </div>
+
+                  <div>
+                    <strong>State</strong>
+                    <span>{pendingData.state}</span>
                   </div>
                 </div>
               </div>
