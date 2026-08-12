@@ -53,12 +53,12 @@
 
 .application-header {
   max-width: 760px;
-  margin: 0 auto 48px;
+  margin: 0 auto 20px;
   text-align: center;
 }
 
 .application-header h1 {
-  margin: 0 0 18px;
+  margin: 0 0 10px;
   color: var(--text-primary);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
@@ -66,16 +66,34 @@
   letter-spacing: -0.045em;
 }
 
-.application-header h1::first-line {
-  color: var(--text-primary);
+.application-header .highlight-orange {
+  color: var(--edsip-orange);
 }
 
 .application-header p {
-  max-width: 680px;
+  max-width: 580px;
   margin: 0 auto;
-  color: var(--text-secondary);
-  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
   line-height: 1.7;
+}
+
+/* =========================================
+   BULB IMAGE
+========================================= */
+
+.bulb-image-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.application-header .bulb-img {
+  width: 250px;
+  height: auto;
+  margin-bottom: -35px;
 }
 
 /* =========================================
@@ -92,6 +110,22 @@
   box-shadow:
     0 20px 60px rgba(60, 45, 25, 0.06),
     0 2px 8px rgba(60, 45, 25, 0.03);
+}
+
+.application-form-title {
+  color: var(--edsip-orange);
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.application-form-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0 0 40px;
 }
 
 /* =========================================
@@ -115,7 +149,7 @@
 .form-section-header h2 {
   margin: 0;
   color: var(--text-primary);
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   font-weight: 750;
   line-height: 1.3;
   letter-spacing: -0.015em;
@@ -166,7 +200,7 @@
 }
 
 /* =========================================
-   INPUTS
+   INPUTS, SELECTS, TEXTAREAS
 ========================================= */
 
 .form-group input,
@@ -175,12 +209,12 @@
   width: 100%;
   box-sizing: border-box;
 
-  padding: 13px 15px;
+  padding: 14px 16px;
 
-  border: 1px solid #dcd7cf;
+  border: 1px solid #e5e5e5;
   border-radius: var(--radius-sm);
 
-  background: #ffffff;
+  background: #f7f7f9;
   color: var(--text-primary);
 
   font-family: inherit;
@@ -190,9 +224,9 @@
   outline: none;
 
   transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
 }
 
 .form-group input::placeholder,
@@ -211,17 +245,51 @@
 .form-group textarea:focus {
   border-color: var(--edsip-orange);
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
 }
+
+/* =========================================
+   IMPROVED SELECT DROPDOWN
+========================================= */
+
+.form-group select {
+  cursor: pointer;
+  /* Remove ugly default browser arrow */
+  appearance: none; 
+  /* Add a custom brand-matching downward arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 44px; /* Make room for custom arrow */
+}
+
+/* Remove the blue browser highlight on option hover */
+.form-group select option {
+  background-color: white;
+  color: var(--text-primary);
+}
+
+.form-group select option:checked {
+  background-color: var(--edsip-orange-light);
+  color: var(--text-primary);
+}
+
+/* =========================================
+   IMPROVED TEXTAREA STYLING
+========================================= */
 
 .form-group textarea {
   min-height: 140px;
   resize: vertical;
   line-height: 1.6;
+  /* Subtle inner shadow for a "sunken", premium look */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02); 
 }
 
-.form-group select {
-  cursor: pointer;
+/* Remove inner shadow on focus so the glow pops */
+.form-group textarea:focus {
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+  background: #ffffff;
 }
 
 /* =========================================
@@ -246,7 +314,7 @@ input[aria-invalid="true"]:focus,
 select[aria-invalid="true"]:focus,
 textarea[aria-invalid="true"]:focus {
   border-color: var(--error);
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
 }
 
 /* =========================================
@@ -689,15 +757,16 @@ textarea:focus-visible {
   }
 
   .application-header {
-    margin-bottom: 34px;
+    margin-bottom: 20px;
   }
 
   .application-header h1 {
     font-size: clamp(2.25rem, 11vw, 3.5rem);
   }
 
-  .application-header p {
-    font-size: 0.95rem;
+  .application-header .bulb-img {
+    width: 180px;
+    margin-bottom: -25px;
   }
 
   .application-form {
@@ -739,25 +808,39 @@ textarea:focus-visible {
   }
 
   .application-header {
-    margin-bottom: 28px;
+    margin-bottom: 16px;
   }
 
   .application-header h1 {
     font-size: 2.25rem;
   }
 
+  .application-header .bulb-img {
+    width: 140px;
+    margin-bottom: -20px;
+  }
+
   .application-form {
     padding: 24px 18px;
   }
 
+  .application-form-title {
+    font-size: 1.3rem;
+  }
+
   .form-section-header h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea {
-    padding: 12px 13px;
+    padding: 12px 14px;
+  }
+
+  .form-group select {
+    background-position: right 14px center;
+    padding-right: 40px;
   }
 
   .form-actions {
