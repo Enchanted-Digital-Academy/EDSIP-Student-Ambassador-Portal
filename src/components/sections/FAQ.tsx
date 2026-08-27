@@ -99,7 +99,7 @@ const FAQ = () => {
               Reach out directly.
             </p>
             <a
-              href="mailto:enchanteddigitalacademy@gmail.com"
+              href="mailto:hello@enchanteddigitalacademy.com.ng"
               className="inline-flex items-center gap-2 bg-brand-brown text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-brand-brown/90 transition-all duration-200 text-sm"
             >
               Contact Us &#8594;

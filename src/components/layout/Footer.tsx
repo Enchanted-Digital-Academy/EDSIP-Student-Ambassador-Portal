@@ -10,7 +10,7 @@ const footerLinks = {
   ],
   Resources: [
     { label: "FAQ", href: "#faq" },
-    { label: "Apply Now", href: "#apply" },
+    { label: "Apply Now", href: "https://docs.google.com/forms/d/e/1FAIpQLSeFLRniYnZIFMUD8KXwsoDiGJF1gSHMlrllOkZzjkVtr0lVZQ/viewform?pli=1" },
     { label: "Ambassador Dashboard", href: "#" },
     { label: "Learning Resources", href: "#" },
     { label: "Events", href: "#" },
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
 
           <a
-            href="#apply"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeFLRniYnZIFMUD8KXwsoDiGJF1gSHMlrllOkZzjkVtr0lVZQ/viewform?pli=1"
             className="flex-shrink-0 bg-white text-brand-orange font-bold px-8 py-3.5 rounded-xl hover:bg-orange-50 transition-all duration-200 text-sm hover:-translate-y-0.5 shadow-lg"
           >
             Apply Now &#8594;

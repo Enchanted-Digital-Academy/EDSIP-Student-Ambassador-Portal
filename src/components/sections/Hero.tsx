@@ -58,7 +58,7 @@ const Hero = () => {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#apply"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeFLRniYnZIFMUD8KXwsoDiGJF1gSHMlrllOkZzjkVtr0lVZQ/viewform?pli=1"
                 className="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-200 text-sm"
               >
                 Apply to Be an Ambassador
