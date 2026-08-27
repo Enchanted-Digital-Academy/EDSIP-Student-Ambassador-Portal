@@ -1,31 +1,29 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
-import DashboardLayout from './layouts/DashboardLayout'
-import DashboardHome from './pages/dashboard/DashboardHome'
-import Profile from './pages/dashboard/Profile'
-import Resources from './pages/dashboard/Resources'
-import Events from './pages/dashboard/Events'
-import Rewards from './pages/dashboard/Rewards'
-import Settings from './pages/dashboard/Settings'
-import ApplicationPage from './pages/ApplicationPage'
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Benefits from "./components/sections/Benefits";
+import Responsibilities from "./components/sections/Responsibilities";
+import Eligibility from "./components/sections/Eligibility";
+import HowItWorks from "./components/sections/HowItWorks";
+import FAQ from "./components/sections/FAQ";
+import CTA from "./components/sections/CTA";
+import Footer from "./components/layout/Footer";
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-       
-        <Route path="/" element={<ApplicationPage />} />
-        <Route path="/dashboard" element={<DashboardLayout />}>
-          <Route index element={<DashboardHome />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="resources" element={<Resources />} />
-          <Route path="events" element={<Events />} />
-          <Route path="rewards" element={<Rewards />} />
-          <Route path="settings" element={<Settings />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  )
-}
+    <div className="bg-white min-h-screen">
+      <Navbar />
+      <Hero />
+      <About />
+      <Benefits />
+      <Responsibilities />
+      <Eligibility />
+      <HowItWorks />
+      <FAQ />
+      <CTA />
+      <Footer />
+    </div>
+  );
+};
 
-export default App
+export default App;
