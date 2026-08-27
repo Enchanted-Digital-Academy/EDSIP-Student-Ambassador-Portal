@@ -4,7 +4,7 @@ import { Plus, Minus } from "lucide-react";
 const faqs = [
   {
     question: "How long is the ambassador tenure?",
-    answer: "The standard ambassador tenure is one full academic session (approximately 9–12 months). Top performers may be invited to renew for a second tenure.",
+    answer: "The standard ambassador tenure is one full academic session (one year). Top performers may be invited to renew for a second tenure.",
   },
   {
     question: "Can I be an ambassador and also apply for EDSIP internship?",
@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: "Is there a stipend or payment for ambassadors?",
-    answer: "The ambassador role is unpaid, but it comes with significant non-monetary value — free courses, certificates, swag, mentorship, and career opportunities that far exceed any token stipend.",
+    answer: "The ambassador role is unpaid, but it comes with significant non-monetary value — free courses, certificates, swag, mentorship, a recommendation letter, and career opportunities that far exceed any token stipend.",
   },
   {
     question: "What happens if I can no longer continue as ambassador?",
@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     question: "When will I hear back after applying?",
-    answer: "Applications are reviewed on a rolling basis. You'll receive an acknowledgement email within 24 hours and a decision within 7–10 business days.",
+    answer: "Applications are reviewed on a rolling basis. You'll receive an acknowledgement email within 24 hours and a decision within 7 business days.",
   },
 ];
 
