@@ -16,11 +16,11 @@ const footerLinks = {
     { label: "Events", href: "#" },
   ],
   Company: [
-    { label: "Enchanted Digital Academy", href: "#" },
-    { label: "Main EDSIP Portal", href: "#" },
-    { label: "Partner With Us", href: "#" },
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Enchanted Digital Academy", href: "https://enchanteddigitalacademy.com.ng/" },
+    { label: "Main EDSIP Portal", href: "https://enchanteddigitalacademy.com.ng/" },
+    { label: "Partner With Us", href: "https://enchanteddigitalacademy.com.ng/" },
+    { label: "Privacy Policy", href: "https://enchanteddigitalacademy.com.ng/" },
+    { label: "Terms of Service", href: "https://enchanteddigitalacademy.com.ng/" },
   ],
 };
 
