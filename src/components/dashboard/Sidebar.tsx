@@ -47,23 +47,12 @@ export default function Sidebar({ collapsed, onToggleCollapse, mobileOpen, onClo
           }`}
         >
           <div className="flex items-center gap-2.5 overflow-hidden">
-                    <a href="#" className="flex items-center gap-3 group flex-shrink-0">
-            <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 ring-2 ring-brand-orange/20 group-hover:ring-brand-orange/60 transition-all duration-300">
-              <img
-                src="/edsip1.jpg"
-                alt="EDSIP Logo"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <span className="text-brand-brown font-bold text-lg tracking-tight">
-                EDSIP
+            <img src={logo} alt="EDSIP logo" className="w-10 h-10 shrink-0 object-contain" />
+            {!collapsed && (
+              <span className="font-semibold text-gray-900 text-sm leading-tight">
+                EDSIP Ambassador Portal
               </span>
-              <p className="text-brand-orange text-[10px] font-medium tracking-widest uppercase leading-none">
-                Ambassador Portal
-              </p>
-            </div>
-          </a>
+            )}
           </div>
           <button
             onClick={onCloseMobile}
