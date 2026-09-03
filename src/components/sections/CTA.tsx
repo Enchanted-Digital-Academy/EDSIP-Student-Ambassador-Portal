@@ -1,4 +1,5 @@
 import { ArrowRight, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
@@ -43,13 +44,13 @@ const CTA = () => {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSeFLRniYnZIFMUD8KXwsoDiGJF1gSHMlrllOkZzjkVtr0lVZQ/viewform?pli=1"
+          <Link
+           to="/application"
             className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-900/30 text-base"
           >
             Apply Now — It's Free
             <ArrowRight size={18} />
-          </a>
+          </Link>
           <a
             href="#about"
             className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white/70 hover:text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 text-base"

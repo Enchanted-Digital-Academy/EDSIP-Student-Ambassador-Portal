@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -65,12 +66,12 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeFLRniYnZIFMUD8KXwsoDiGJF1gSHMlrllOkZzjkVtr0lVZQ/viewform?pli=1"
-              className="bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-200"
-            >
-              Apply Now
-            </a>
+           <Link
+    to="/application"
+    className="bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-200"
+  >
+    Apply Now
+  </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -102,13 +103,13 @@ const Navbar = () => {
             </a>
           ))}
           <div className="pt-4">
-            <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSeFLRniYnZIFMUD8KXwsoDiGJF1gSHMlrllOkZzjkVtr0lVZQ/viewform?pli=1"
-              onClick={() => setIsOpen(false)}
+            <Link
+              to="/application"
+              onClick={() => setIsOpen(false)}    
               className="block text-center bg-brand-orange hover:bg-brand-orange-hover text-white text-sm font-semibold py-3 rounded-xl transition-all duration-200"
             >
               Apply Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

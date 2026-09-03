@@ -112,9 +112,9 @@ const FAQ = () => {
               <p className="text-gray-500 text-sm leading-relaxed mb-3">
                 Book a free 10-minute call with an ambassador coordinator.
               </p>
-              <button className="text-brand-orange font-semibold text-sm hover:underline">
-                Book a Call &#8594;
-              </button>
+             <a href="tel:07065862449" className="text-brand-orange font-semibold text-sm hover:underline">
+  Book a Call &#8594;
+</a>
             </div>
           </div>
 
