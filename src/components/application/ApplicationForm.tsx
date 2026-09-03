@@ -1,6 +1,13 @@
 import { useForm } from "react-hook-form";
 import type { ApplicationFormData } from "../../types/application";
 
+import PersonalInformation from "./PersonalInformation";
+import AcademicInformation from "./AcademicInformation";
+import AboutYourself from "./AboutYourself";
+import LeadershipExperience from "./LeadershipExperience";
+import SocialMediaLinks from "./SocialMediaLinks";
+import TermsAndSubmit from "./TermsAndSubmit";
+
 interface ApplicationFormProps {
   onSubmit: (data: ApplicationFormData) => void;
   isSubmitting: boolean;

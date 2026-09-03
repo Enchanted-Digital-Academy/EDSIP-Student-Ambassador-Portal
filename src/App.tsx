@@ -1,28 +1,38 @@
-import Navbar from "./components/layout/Navbar";
-import Hero from "./components/sections/Hero";
-import About from "./components/sections/About";
-import Benefits from "./components/sections/Benefits";
-import Responsibilities from "./components/sections/Responsibilities";
-import Eligibility from "./components/sections/Eligibility";
-import HowItWorks from "./components/sections/HowItWorks";
-import FAQ from "./components/sections/FAQ";
-import CTA from "./components/sections/CTA";
-import Footer from "./components/layout/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Public Pages
+import HomePage from "./pages/HomePage";
+// Updated to target the nested application folder
+import ApplicationPage from "./pages/ApplicationPage";
+
+// Dashboard Layout & Pages 
+import DashboardLayout from "./components/layout/DashboardLayout";
+import DashboardHome from "./pages/dashboard/DashboardHome"; 
+import ProfilePage from "./pages/dashboard/Profile";
+import ResourcesPage from "./pages/dashboard/Resources";
+import EventsPage from "./pages/dashboard/Events";
+import RewardsPage from "./pages/dashboard/Rewards";
+import SettingsPage from "./pages/dashboard/Settings";
 
 const App = () => {
   return (
-    <div className="bg-white min-h-screen">
-      <Navbar />
-      <Hero />
-      <About />
-      <Benefits />
-      <Responsibilities />
-      <Eligibility />
-      <HowItWorks />
-      <FAQ />
-      <CTA />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/application" element={<ApplicationPage />} />
+
+        {/* Authenticated Dashboard Routes */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="resources" element={<ResourcesPage />} />
+          <Route path="events" element={<EventsPage />} />
+          <Route path="rewards" element={<RewardsPage />} />
+          <Route path="settings" element={<SettingsPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

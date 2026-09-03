@@ -22,7 +22,7 @@ const steps = [
     number: "03",
     icon: <BookOpen size={22} />,
     title: "Onboarding & Training",
-    description: "Accepted ambassadors go through a 3-day virtual onboarding. You'll receive your ambassador kit, platform access, and training materials.",
+    description: "Accepted ambassadors go through a 2-day virtual onboarding. You'll receive your ambassador kit, platform access, and training materials.",
     duration: "Week 3",
   },
   {

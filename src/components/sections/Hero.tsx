@@ -1,4 +1,5 @@
 import { ArrowRight, Star, Users, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -57,13 +58,13 @@ const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#apply"
+              <Link
+    to="/application"
                 className="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-bold px-7 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-orange-200 text-sm"
               >
                 Apply to Be an Ambassador
                 <ArrowRight size={16} />
-              </a>
+              </Link>
               <a
                 href="#about"
                 className="inline-flex items-center justify-center gap-2 border border-gray-200 hover:border-brand-orange/40 text-gray-600 hover:text-brand-orange font-semibold px-7 py-4 rounded-xl transition-all duration-200 text-sm"
@@ -80,7 +81,7 @@ const Hero = () => {
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl overflow-hidden">
-                    <img src="/edsip1.mjpg" alt="EDSIP" className="w-full h-full object-cover" />
+                    <img src="/edsip1.jpg" alt="EDSIP" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <p className="text-brand-brown font-semibold text-sm">Ambassador Portal</p>
