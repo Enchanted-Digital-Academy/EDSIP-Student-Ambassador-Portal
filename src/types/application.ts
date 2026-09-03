@@ -9,4 +9,5 @@ export interface ApplicationFormData {
   motivation: string;
   leadershipExperience: string;
   socialMediaLinks: string;
+  termsAccepted: boolean; // Add this exact line
 }
