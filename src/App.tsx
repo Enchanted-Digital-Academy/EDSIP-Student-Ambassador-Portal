@@ -1,5 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-
+import AntiPiracyPage from "./pages/AntiPiracyPage";
+import TermsOfUsePage from "./pages/TermsOfUsePage";
+import RefundCancellationPage from "./pages/RefundCancellationPage";
 import Navbar from "./components/layout/Navbar";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
@@ -41,6 +43,17 @@ const App = () => {
 
         {/* Student Ambassador Application */}
         <Route path="/apply" element={<ApplicationPage />} />
+
+        <Route path="/terms-of-use" element={<TermsOfUsePage />} />
+        <Route
+          path="/refund-cancellation"
+          element={<RefundCancellationPage />}
+        />
+
+        <Route
+        path="/anti-piracy"
+        element={<AntiPiracyPage />}
+      />
 
         {/* Unknown URLs */}
         <Route path="*" element={<Navigate to="/" replace />} />
