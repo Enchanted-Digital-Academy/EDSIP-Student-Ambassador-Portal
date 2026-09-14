@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Menu, Bell } from 'lucide-react';
-import logo from '../../assets/logo.png';
 import NotificationsPanel from './NotificationsPanel';
 import { mockNotifications } from '../../data/mockDashboard';
 
@@ -34,7 +33,18 @@ export default function TopNav({ onOpenMobile, title = 'Dashboard', userName }: 
         >
           <Menu size={20} />
         </button>
-        <img src={logo} alt="EDSIP logo" className="w-8 h-8 object-contain lg:hidden" />
+                  <a href="#" className="flex items-center gap-3 group flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 ring-2 ring-brand-orange/20 group-hover:ring-brand-orange/60 transition-all duration-300">
+              <img
+                src="/edsip1.jpg"
+                alt="EDSIP Logo"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              
+            </div>
+          </a>
         <h1 className="text-lg font-semibold text-gray-900">{title}</h1>
       </div>
 

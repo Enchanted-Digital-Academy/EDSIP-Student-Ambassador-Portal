@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const footerLinks = {
   Programme: [
@@ -10,17 +11,17 @@ const footerLinks = {
   ],
   Resources: [
     { label: "FAQ", href: "#faq" },
-    { label: "Apply Now", href: "#apply" },
+    { label: "Apply Now", href: "/application" },
     { label: "Ambassador Dashboard", href: "#" },
     { label: "Learning Resources", href: "#" },
     { label: "Events", href: "#" },
   ],
   Company: [
-    { label: "Enchanted Digital Academy", href: "#" },
-    { label: "Main EDSIP Portal", href: "#" },
-    { label: "Partner With Us", href: "#" },
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Enchanted Digital Academy", href: "https://enchanteddigitalacademy.com.ng/" },
+    { label: "Main EDSIP Portal", href: "https://enchanteddigitalacademy.com.ng/" },
+    { label: "Partner With Us", href: "https://enchanteddigitalacademy.com.ng/" },
+    { label: "Privacy Policy", href: "https://enchanteddigitalacademy.com.ng/" },
+    { label: "Terms of Service", href: "https://enchanteddigitalacademy.com.ng/" },
   ],
 };
 
@@ -46,12 +47,12 @@ const Footer = () => {
             </p>
           </div>
 
-          <a
-            href="#apply"
+          <Link
+            to="/application"
             className="flex-shrink-0 bg-white text-brand-orange font-bold px-8 py-3.5 rounded-xl hover:bg-orange-50 transition-all duration-200 text-sm hover:-translate-y-0.5 shadow-lg"
           >
             Apply Now &#8594;
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -87,7 +88,7 @@ const Footer = () => {
               {[
                 {
                   icon: <Mail size={14} />,
-                  text: "enchanteddigitalacademy@gmail.com",
+                  text: "hello@enchanteddigitalacademy@gmail.com",
                 },
                 {
                   icon: <Phone size={14} />,

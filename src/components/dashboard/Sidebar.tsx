@@ -3,7 +3,6 @@ import {
   Home, User, BookOpen, Calendar, Award, Settings,
   ChevronLeft, ChevronRight, X,
 } from 'lucide-react';
-import logo from '../../assets/logo.png'; // update extension if yours is .svg
 
 interface SidebarProps {
   collapsed: boolean;
