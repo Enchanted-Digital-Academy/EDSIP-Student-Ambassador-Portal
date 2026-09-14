@@ -14,8 +14,7 @@ type SubmissionStatus = "idle" | "loading" | "success" | "error";
 /*
  * Formspark submission endpoint
  */
-const FORMSPARK_ACTION_URL =
-  "https://submit-form.com/iU6eqgNVe";
+const FORMSPARK_ACTION_URL = "https://submit-form.com/iU6eqgNVe";
 
 const ApplicationPage = () => {
   const navigate = useNavigate();
@@ -103,7 +102,7 @@ const ApplicationPage = () => {
        */
       if (!response.ok) {
         throw new Error(
-          `Formspark submission failed: HTTP ${response.status}`
+          `Formspark submission failed: HTTP ${response.status}`,
         );
       }
 
@@ -160,7 +159,7 @@ const ApplicationPage = () => {
    * APPLICATION PAGE
    */
   return (
-    <main className="min-h-screen box-border bg-[#f8f5ef] px-6 pb-24 pt-[72px] text-[#171717]">
+    <main className="box-border min-h-screen bg-[#f8f5ef] px-6 pb-24 pt-[72px] text-[#171717]">
       <div className="mx-auto w-full max-w-[1040px]">
         {/* Header / Hero */}
         <header className="mx-auto mb-[34px] max-w-[760px] text-center">
