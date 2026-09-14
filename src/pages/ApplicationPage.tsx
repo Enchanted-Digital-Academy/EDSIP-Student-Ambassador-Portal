@@ -17,7 +17,6 @@ type SubmissionStatus = "idle" | "loading" | "success" | "error";
 const FORMSPARK_ACTION_URL = "https://submit-form.com/iU6eqgNVe";
 
 const ApplicationPage = () => {
-  const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const [submissionStatus, setSubmissionStatus] =
