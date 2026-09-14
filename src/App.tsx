@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import TeamPage from "./pages/TeamPage";
 import AntiPiracyPage from "./pages/AntiPiracyPage";
 import TermsOfUsePage from "./pages/TermsOfUsePage";
 import RefundCancellationPage from "./pages/RefundCancellationPage";
@@ -43,6 +44,8 @@ const App = () => {
 
         {/* Student Ambassador Application */}
         <Route path="/apply" element={<ApplicationPage />} />
+
+        <Route path="/team" element={<TeamPage />} />
 
         <Route path="/terms-of-use" element={<TermsOfUsePage />} />
         <Route
