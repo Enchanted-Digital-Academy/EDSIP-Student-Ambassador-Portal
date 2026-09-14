@@ -1,36 +1,65 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import TeamPage from "./pages/TeamPage";
+import AntiPiracyPage from "./pages/AntiPiracyPage";
+import TermsOfUsePage from "./pages/TermsOfUsePage";
+import RefundCancellationPage from "./pages/RefundCancellationPage";
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Benefits from "./components/sections/Benefits";
+import Responsibilities from "./components/sections/Responsibilities";
+import Eligibility from "./components/sections/Eligibility";
+import HowItWorks from "./components/sections/HowItWorks";
+import FAQ from "./components/sections/FAQ";
+import CTA from "./components/sections/CTA";
+import Footer from "./components/layout/Footer";
 
-// Public Pages
-import HomePage from "./pages/HomePage";
-// Updated to target the nested application folder
 import ApplicationPage from "./pages/ApplicationPage";
 
-// Dashboard Layout & Pages 
-import DashboardLayout from "./components/layout/DashboardLayout";
-import DashboardHome from "./pages/dashboard/DashboardHome"; 
-import ProfilePage from "./pages/dashboard/Profile";
-import ResourcesPage from "./pages/dashboard/Resources";
-import EventsPage from "./pages/dashboard/Events";
-import RewardsPage from "./pages/dashboard/Rewards";
-import SettingsPage from "./pages/dashboard/Settings";
+const HomePage = () => {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Benefits />
+        <Responsibilities />
+        <Eligibility />
+        <HowItWorks />
+        <FAQ />
+        <CTA />
+      </main>
+      <Footer />
+    </>
+  );
+};
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public Routes */}
+        {/* Public website */}
         <Route path="/" element={<HomePage />} />
-        <Route path="/application" element={<ApplicationPage />} />
 
-        {/* Authenticated Dashboard Routes */}
-        <Route path="/dashboard" element={<DashboardLayout />}>
-          <Route index element={<DashboardHome />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="resources" element={<ResourcesPage />} />
-          <Route path="events" element={<EventsPage />} />
-          <Route path="rewards" element={<RewardsPage />} />
-          <Route path="settings" element={<SettingsPage />} />
-        </Route>
+        {/* Student Ambassador Application */}
+        <Route path="/apply" element={<ApplicationPage />} />
+
+        <Route path="/team" element={<TeamPage />} />
+
+        <Route path="/terms-of-use" element={<TermsOfUsePage />} />
+        <Route
+          path="/refund-cancellation"
+          element={<RefundCancellationPage />}
+        />
+
+        <Route
+        path="/anti-piracy"
+        element={<AntiPiracyPage />}
+      />
+
+        {/* Unknown URLs */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );

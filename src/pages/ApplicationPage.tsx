@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import ApplicationForm from "../components/application/ApplicationForm";
 import ConfirmationModal from "../components/application/ConfirmationModal";
@@ -12,8 +11,12 @@ import bulbImage from "../assets/bulb.png";
 
 type SubmissionStatus = "idle" | "loading" | "success" | "error";
 
+/*
+ * Formspark submission endpoint
+ */
+const FORMSPARK_ACTION_URL = "https://submit-form.com/iU6eqgNVe";
+
 const ApplicationPage = () => {
-  const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const [submissionStatus, setSubmissionStatus] =
@@ -44,8 +47,15 @@ const ApplicationPage = () => {
   const handleConfirmSubmission = async () => {
     if (!pendingData) return;
 
+    /*
+     * Create a copy so we don't mutate the original
+     * form data.
+     */
     const fixedData = { ...pendingData };
 
+    /*
+     * Normalize the social media link.
+     */
     const trimmedLink = fixedData.socialMediaLinks.trim();
 
     if (trimmedLink.startsWith("@")) {
@@ -63,21 +73,52 @@ const ApplicationPage = () => {
     setSubmissionStatus("loading");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      /*
+       * Submit application to Formspark.
+       */
+      const response = await fetch(FORMSPARK_ACTION_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          ...fixedData,
 
-      const response = { ok: true };
+          /*
+           * Email notification customization.
+           */
+          _email: {
+            subject: "New EDSIP Student Ambassador Application",
+            from: "EDSIP Student Ambassador Portal",
+          },
+        }),
+      });
 
+      /*
+       * Treat any non-successful HTTP response
+       * as a failed submission.
+       */
       if (!response.ok) {
-        throw new Error("Application submission failed");
+        throw new Error(
+          `Formspark submission failed: HTTP ${response.status}`,
+        );
       }
 
       console.log("Application submitted successfully:", fixedData);
 
+      /*
+       * Clear pending data and display the existing
+       * success page.
+       */
       setPendingData(null);
       setSubmissionStatus("success");
     } catch (error) {
       console.error("Application submission failed:", error);
 
+      /*
+       * Display the existing error state.
+       */
       setSubmissionStatus("error");
     }
   };
@@ -92,10 +133,11 @@ const ApplicationPage = () => {
   };
 
   /*
-   * Return to the EDSIP homepage using React Router
+   * Return to the EDSIP homepage.
    */
   const handleBackToHome = () => {
-    navigate("/");
+    window.location.href =
+      "https://edsip-student-ambassador-portal.vercel.app/";
   };
 
   /*
@@ -116,7 +158,7 @@ const ApplicationPage = () => {
    * APPLICATION PAGE
    */
   return (
-    <main className="min-h-screen box-border bg-[#f8f5ef] px-6 pb-24 pt-[72px] text-[#171717]">
+    <main className="box-border min-h-screen bg-[#f8f5ef] px-6 pb-24 pt-[72px] text-[#171717]">
       <div className="mx-auto w-full max-w-[1040px]">
         {/* Header / Hero */}
         <header className="mx-auto mb-[34px] max-w-[760px] text-center">
